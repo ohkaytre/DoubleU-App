@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-card/30 border-t border-white/5 pt-16 md:pt-24 pb-32 md:pb-16 px-6 md:px-12">
+    <footer className="hidden md:block bg-card/30 border-t border-white/5 pt-16 md:pt-24 pb-16 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 mb-16">
           <div className="md:col-span-5 space-y-6 md:space-y-8">
