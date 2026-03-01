@@ -2,26 +2,26 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // 1. Enable static export for Capacitor
+  // 1. Enables static export (required for Capacitor)
   output: 'export',
-  
-  // 2. Disable server-side rendering and static optimization for API routes
-  // (API routes will not work in the static export, but this prevents 
-  // Next.js from trying to build them)
+  // 2. Trailing slash helps with static asset routing on mobile
   trailingSlash: true,
-  
-  // 3. Configure Webpack to ignore Node.js modules in the frontend bundle
+
+  // 3. Configure Webpack to ignore Node.js-only modules in the frontend bundle.
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
-        // Ignore modules that only exist in Node.js
+        // --- IGNORE MISSING MODULES ---
         fs: false,
         path: false,
         os: false,
         crypto: false,
         stream: false,
         constants: false,
+        tls: false,
+        net: false,
+        http2: false,
       };
     }
     return config;
