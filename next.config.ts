@@ -2,17 +2,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // 1. Enables static export (required for Capacitor)
   output: 'export',
-  // 2. Trailing slash helps with static asset routing on mobile
   trailingSlash: true,
-
-  // 3. Configure Webpack to ignore Node.js-only modules in the frontend bundle.
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
-        // --- IGNORE MISSING MODULES ---
+        // --- ADD THESE FALLBACKS ---
+        dns: false,
+        async_hooks: false,
+        dgram: false,
+        child_process: false,
+        // ---------------------------
         fs: false,
         path: false,
         os: false,
