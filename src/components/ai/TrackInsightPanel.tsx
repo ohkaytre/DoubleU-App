@@ -1,86 +1,121 @@
-
+// src/components/ai/TrackInsightPanel.tsx
 "use client";
 
-import React, { useState } from 'react';
-import { Sparkles, Loader2, Info } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { generateTrackInsights, GenerateTrackInsightsOutput } from '@/ai/flows/generate-track-insights';
-import { Track } from '@/types/audio';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Sparkles, BrainCircuit } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+interface Track {
+  id: string;
+  title: string;
+  artist: string;
+  album?: string;
+  lyrics?: string;
+}
 
 interface TrackInsightPanelProps {
   track: Track;
   className?: string;
 }
 
-export const TrackInsightPanel: React.FC<TrackInsightPanelProps> = ({ track, className }) => {
-  const [insight, setInsight] = useState<GenerateTrackInsightsOutput | null>(null);
+export function TrackInsightPanel({ track, className }: TrackInsightPanelProps) {
+  const [insight, setInsight] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleGenerate = async () => {
+  // Reset state whenever the track changes
+  useEffect(() => {
+    setInsight(null);
+    setError(null);
+  }, [track.id]);
+
+  const handleGenerateInsight = async () => {
     setLoading(true);
+    setError(null);
+    setInsight(null);
+
     try {
-      const result = await generateTrackInsights({
-        trackTitle: track.title,
-        artistName: track.artist,
-        releaseYear: track.releaseYear,
-        lyrics: track.lyrics
+      // Fetch from the API route, not the server-side flow directly
+      const response = await fetch('/api/generate-insights', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          trackTitle: track.title,
+          artistName: track.artist,
+          albumName: track.album,
+          lyrics: track.lyrics,
+        }),
       });
-      setInsight(result);
-    } catch (error) {
-      console.error("AI Insight error:", error);
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch insight');
+      }
+
+      const data = await response.json();
+      setInsight(data.insightContent);
+    } catch (err) {
+      console.error(err);
+      setError('Could not generate insight at this time.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Card className={cn("bg-card/50 border-secondary/20 overflow-hidden", className)}>
-      <CardHeader className="bg-secondary/5 py-3 border-b border-secondary/10 flex flex-row items-center justify-between">
-        <CardTitle className="text-sm font-headline uppercase flex items-center gap-2 text-secondary">
-          <Sparkles className="w-4 h-4" />
-          Track Insights
+    <Card className={cn("border-primary/20 bg-card/50 backdrop-blur-sm", className)}>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-xl font-bold flex items-center gap-2">
+          <BrainCircuit className="w-5 h-5 text-primary" />
+          AI Track Analysis
         </CardTitle>
-        {!insight && (
-          <Button 
-            size="sm" 
-            variant="ghost" 
-            onClick={handleGenerate} 
-            disabled={loading}
-            className="h-7 text-xs text-secondary hover:bg-secondary/10"
-          >
-            {loading ? <Loader2 className="w-3 h-3 animate-spin mr-1" /> : <Sparkles className="w-3 h-3 mr-1" />}
-            Generate
-          </Button>
-        )}
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleGenerateInsight}
+          disabled={loading}
+          className="gap-2"
+        >
+          {loading ? (
+            <Skeleton className="h-4 w-20" />
+          ) : (
+            <>
+              <Sparkles className="w-4 h-4" />
+              Analyze
+            </>
+          )}
+        </Button>
       </CardHeader>
-      <CardContent className="p-4">
-        {insight ? (
-          <div className="space-y-2 animate-in fade-in slide-in-from-bottom-2 duration-500">
-            <h5 className="font-bold text-primary text-sm">{insight.insightTitle}</h5>
-            <p className="text-xs text-muted-foreground leading-relaxed italic">
-              {insight.insightContent}
-            </p>
-            <Button 
-              variant="link" 
-              className="p-0 h-auto text-[10px] text-muted-foreground uppercase tracking-widest hover:text-secondary"
-              onClick={() => setInsight(null)}
-            >
-              Regenerate
-            </Button>
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center py-6 text-center space-y-3">
-            <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
-              <Info className="w-5 h-5 text-secondary/40" />
+      <CardContent>
+        <div className="text-sm text-muted-foreground min-h-[100px]">
+          {loading && (
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-5/6" />
+              <Skeleton className="h-4 w-4/6" />
             </div>
-            <p className="text-xs text-muted-foreground px-4">
-              Curious about the story behind <span className="text-foreground font-medium">{track.title}</span>? Let our AI analyze the vibes.
-            </p>
-          </div>
-        )}
+          )}
+
+          {error && (
+            <p className="text-destructive">{error}</p>
+          )}
+
+          {!loading && !insight && !error && (
+            <p>Click "Analyze" to generate AI-driven insights about <strong>{track.title}</strong>.</p>
+          )}
+
+          {!loading && insight && (
+            <div className="prose prose-sm prose-invert max-w-none">
+              <p className="leading-relaxed">{insight}</p>
+            </div>
+          )}
+        </div>
       </CardContent>
     </Card>
   );
-};
+}
+
