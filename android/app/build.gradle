@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-// Ensure Kotlin plugin is applied if using Kotlin
-apply plugin: 'kotlin-android' 
 
 android {
     namespace = "online.doubleuofficial.app"
@@ -14,21 +12,17 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
              ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
 
+    // --- CONFIGURE JAVA 17 COMPATIBILITY ---
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-    
-    // --- CORRECTED SECTION ---
-    // If you are using Kotlin, these options must be configured properly
-    kotlinOptions {
-        jvmTarget = '17'
-    }
-    // -------------------------
+    // ----------------------------------------
 
     buildTypes {
         release {
