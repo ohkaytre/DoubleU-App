@@ -1,0 +1,41 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-artist",
+      "description": "DoubleU posing in a futuristic studio setting",
+      "imageUrl": "https://images.unsplash.com/photo-1516113954001-34f54448a01f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHh8MXx8ZnV0dXJpc3RpYyUyMG11c2ljaWFufGVufDB8fHx8MTc3MjIzOTIzMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "futuristic musician"
+    },
+    {
+      "id": "album-faded-405",
+      "description": "Faded 405 album cover art",
+      "imageUrl": "https://picsum.photos/seed/faded405/600/600",
+      "imageHint": "neon highway"
+    },
+    {
+      "id": "album-neon-nights",
+      "description": "Neon Nights album cover art",
+      "imageUrl": "https://images.unsplash.com/photo-1608347539243-b592b14332d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHh8MXx8bmVvbiUyMHN5bnRod2F2ZXxlbnwwfHx8fDE3NzIxODMyNTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "neon synthwave"
+    },
+    {
+      "id": "album-pulse-rhythm",
+      "description": "Pulse Rhythm album cover art",
+      "imageUrl": "https://images.unsplash.com/photo-1637789594401-5a0dac0d3e36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMGRpZ2l0YWx8ZW58MHx8fHwxNzcyMjIzNDg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract digital"
+    },
+    {
+      "id": "album-void-echoes",
+      "description": "Void Echoes album cover art",
+      "imageUrl": "https://images.unsplash.com/photo-1769016416793-0b7ef3c6309d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxkYXJrJTIwY29zbWljfGVufDB8fHx8MTc3MjIzOTIzMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dark cosmic"
+    },
+    {
+      "id": "bio-artist-1",
+      "description": "DoubleU performing live on stage",
+      "imageUrl": "https://images.unsplash.com/photo-1767969457898-51d5e9cf81d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb25jZXJ0JTIwcGVyZm9ybWFuY2V8ZW58MHx8fHwxNzcyMjM5MjMwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "concert performance"
+    }
+  ]
+}

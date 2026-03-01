@@ -1,0 +1,13 @@
+0000000000000000000000000000000000000000 83e8ae890794a07505f5bea338eff56d4bdb964d Firebase Studio <noreply@firebase.studio> 1770754680 +0000	commit (initial): Initialized workspace with Firebase Studio
+83e8ae890794a07505f5bea338eff56d4bdb964d 7ee064cd94c007ac4e45d7fb74036b1f5d114b6f Tre Hartman <ohkaytre@gmail.com> 1772239115 +0000	commit: Initial prototype
+7ee064cd94c007ac4e45d7fb74036b1f5d114b6f 64bad61e67f45e549df9fb722ba0f73eabbe5ebf Tre Hartman <ohkaytre@gmail.com> 1772239230 +0000	commit: Create all pages and fix any errors
+64bad61e67f45e549df9fb722ba0f73eabbe5ebf 0c13a96197b6e47f9983a3af71d2e2267795d0d6 Tre Hartman <ohkaytre@gmail.com> 1772239310 +0000	commit: Fill the pages with the right content
+0c13a96197b6e47f9983a3af71d2e2267795d0d6 781929e328e039305b9e30ca331a6b0c05b0fdf3 Tre Hartman <ohkaytre@gmail.com> 1772239426 +0000	commit: Make the admin page a full portal used to update the music, and website
+781929e328e039305b9e30ca331a6b0c05b0fdf3 a5352961d828b47367ee02302ae01089ddd0cde5 Tre Hartman <ohkaytre@gmail.com> 1772239548 +0000	commit: Fix the navigation and errors
+a5352961d828b47367ee02302ae01089ddd0cde5 9f58049f9f0b5c0f925d21dec8662070ec3ea02e Tre Hartman <ohkaytre@gmail.com> 1772239611 +0000	commit: Cannot see the icons or text on the navbar
+9f58049f9f0b5c0f925d21dec8662070ec3ea02e e5233fe5b737e263a74df404ad3f7bf9623e9c0f Tre Hartman <ohkaytre@gmail.com> 1772239731 +0000	commit: Add missing details and upgrade the site
+e5233fe5b737e263a74df404ad3f7bf9623e9c0f cef7eb09f4f6eef0a82fc70d3cd4d89b83afcbf2 Tre Hartman <ohkaytre@gmail.com> 1772239763 +0000	commit: Search the web for the artist DoubleU who just released the faded 405 al
+cef7eb09f4f6eef0a82fc70d3cd4d89b83afcbf2 becf9b38487e0af0687e1c6aa7d3ce6ba15ef521 Tre Hartman <ohkaytre@gmail.com> 1772239871 +0000	commit: Make it mobile first
+becf9b38487e0af0687e1c6aa7d3ce6ba15ef521 bcdeb8611f7095891ee390a20c1329542136a567 Tre Hartman <ohkaytre@gmail.com> 1772239923 +0000	commit: Try fixing this error: `Runtime ReferenceError: Input is not defined. Er
+bcdeb8611f7095891ee390a20c1329542136a567 9fe4a13223837718426d98777928a964ec6e6625 Tre Hartman <ohkaytre@gmail.com> 1772240538 +0000	commit: ## Error Type
+9fe4a13223837718426d98777928a964ec6e6625 63745e8d5fe0e8e3f051be6bba815652090a38e9 Tre Hartman <ohkaytre@gmail.com> 1772326146 +0000	commit: Make it more like a website
